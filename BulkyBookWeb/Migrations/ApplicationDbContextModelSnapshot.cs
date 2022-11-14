@@ -36,8 +36,9 @@ namespace BulkyBookWeb.Migrations
                     b.Property<int>("DisplayOder")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

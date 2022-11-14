@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBookWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221114062907_add-migrations AddCategoryToDatabase")]
-    partial class addmigrationsAddCategoryToDatabase
+    [Migration("20221114102631_AddCategoryToDatabase")]
+    partial class AddCategoryToDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,9 @@ namespace BulkyBookWeb.Migrations
                     b.Property<int>("DisplayOder")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
