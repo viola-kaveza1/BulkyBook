@@ -10,5 +10,21 @@
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
         </div>
+         <div class="mb-3">
+            <label asp-for="DisplayOder"></label>
+            <input asp-for="DisplayOder" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Id"></label>
+            <input asp-for="Id" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="CreatedDateTime"></label>
+            <input asp-for="CreatedDateTime" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width :150px">
+            Back To List
+        </a>
     </div>
 </form>
