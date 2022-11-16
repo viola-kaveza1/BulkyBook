@@ -8,6 +8,8 @@ namespace BulkyBookWeb.Controllers
     {
         private readonly ApplicationDbContext _db;
 
+        public object CategoryFromDbFirst { get; private set; }
+
         public CategoryController(ApplicationDbContext db)
         {
             _db = db;
@@ -47,9 +49,21 @@ namespace BulkyBookWeb.Controllers
 
 
         //Get
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if(id == null || id==0)
+            {
+                return NotFound();
+            }
+            var CategoryFromDb = _db.Categories.Find(id);
+            //var CategoryFromDbFirst = _db.Categories.FirstOrDefault(u=>u.Id == id);
+            //var CategoryFromDSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
+
+            if(CategoryFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(CategoryFromDb);
         }
         //POST
         [HttpPost]
