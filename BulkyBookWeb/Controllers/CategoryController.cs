@@ -9,7 +9,7 @@ namespace BulkyBookWeb.Controllers
     {
         private readonly ApplicationDbContext _db;
 
-        public object CategoryFromDbFirst { get; private set; }
+        
 
         public CategoryController(ApplicationDbContext db)
         {
@@ -23,7 +23,7 @@ namespace BulkyBookWeb.Controllers
             return View(objCategoryList);
         }
 
-        //Get
+        //GET
         public IActionResult Create()
         {
             return View();
@@ -40,8 +40,9 @@ namespace BulkyBookWeb.Controllers
 
             if (ModelState.IsValid) 
             {
-            _db.Categories.Update(obj);
+            _db.Categories.Add(obj);
             _db.SaveChanges();
+             TempData["success"] = "Category created successfully";
             return RedirectToAction("Index");
             }
             return View(obj);
@@ -49,7 +50,7 @@ namespace BulkyBookWeb.Controllers
 
 
 
-        //Get
+        //GET
         public IActionResult Edit(int? id)
         {
             if(id == null || id==0)
@@ -79,12 +80,13 @@ namespace BulkyBookWeb.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+               TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        //Get
+        //G
       public IActionResult Delete(int? id)
        {          
             if (id == null || id == 0)           
@@ -117,6 +119,7 @@ namespace BulkyBookWeb.Controllers
 
                _db.Categories.Remove(obj);            
                _db.SaveChanges();
+            TempData["suceess"] = "Category deleted successfully";
                return RedirectToAction("Index");
             
           
