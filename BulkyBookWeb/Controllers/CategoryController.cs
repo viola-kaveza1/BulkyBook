@@ -29,7 +29,7 @@ namespace BulkyBookWeb.Controllers
             return View();
         }
         //POST
-        [HttpPost]
+        [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
